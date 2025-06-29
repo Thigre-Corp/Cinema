@@ -12,6 +12,8 @@
     <main>
         <h1>PDO Cinema</h1>
         <h2><?= $titre_secondaire ?></h2>
+        <?= $contenu ?>
+        
     </main>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-
+//buffering start
 ob_start(); ?>
 
 <p>Il y a <?= $requete->rowCount() ?> films</p>
@@ -26,5 +26,7 @@ ob_start(); ?>
 
 $titre= "Liste des films";
 $titre_secondaire = "Liste des films";
+// buffering end
 $contenu = ob_get_clean();
 require "view/template.php";
+
