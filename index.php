@@ -21,5 +21,5 @@ if (isset($_GET["action"])){
     }
 }
 else{
-    $ctrlCinema->listFilms();
+    $ctrlCinema->listFilms(); // besoin de mettre la vue accueil
 }

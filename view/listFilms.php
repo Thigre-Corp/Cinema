@@ -4,28 +4,20 @@ ob_start(); ?>
 
 <p>Il y a <?= $requete->rowCount() ?> films</p>
 
-<table>
-    <thead>
-        <tr>
-            <th>TITRE</th>
-            <th>ANNEE SORTIE</th>
-        </tr>
-    </thead>
-    <tbody>
+
         <?php
             foreach($requete->fetchAll() as $film ){ ?>
-                <tr>
-                    <td><?= $film["film_titre"] ?></td>
-                    <td><?= $film["film_annee"] ?></td>
-                <tr>
+                <div class="cardcardFilmAccueil">
+                    <img class="affiche" scr=<?php echo "'".$film["film_afficheURL"]."'"; ?> >
+                    <span class='titre'><?= $film["film_titre"] ?> (<?= $film["film_annee"] ?>)</span>
+                </div>
         <?php } ?>
-    </tbody>
-</table>
+
 
 <?php
 
 $titre= "Liste des films";
-$titre_secondaire = "Liste des films";
+$titre_secondaire = "A l'affiche Aujourd'hui";
 // buffering end
 $contenu = ob_get_clean();
 require "view/template.php";

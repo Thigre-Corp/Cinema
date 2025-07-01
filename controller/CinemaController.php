@@ -10,7 +10,7 @@ class CinemaController {
     public function listFilms() {
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-            SELECT film_titre, film_annee
+            SELECT film_titre, film_annee, film_afficheURL 
             FROM film
             ");
         require "view/listFilms.php";
