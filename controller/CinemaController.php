@@ -14,6 +14,7 @@ class CinemaController {
             FROM film
             ");
         require "view/listFilms.php";
+        $pdo = null;
     }
     
     // LISTER ACTEURS

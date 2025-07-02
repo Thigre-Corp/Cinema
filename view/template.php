@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 
-    <title><?= $titre ?></title>
+    <title>Drive-In : <?= $titre ?></title>
 </head>
 <body>
     <div class="container">
@@ -34,6 +34,6 @@
     <footer>
         <small><a href= "#">Mentions légales, ETC...</a></small>
     </footer>
-    </div>
+</div>
 </body>
 </html>
