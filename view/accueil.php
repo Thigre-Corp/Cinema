@@ -2,11 +2,14 @@
 //buffering start
 ob_start(); ?>
 
-<p>Il y a <?= $requete->rowCount() ?> films</p>
 
         <?php
+            //....... ne retourne que 3 films -> rendre l'affichage des trois films aléatoire par rapport à la liste disponible.
             $i =0;
             foreach($requete->fetchAll() as $film ){ 
+                if (++$i > 3 ){
+                    break;
+                }
                 ?>
                 <div class="cardFilmAccueil">
                     <a href="?action=detailFilm&id=<?= $film['id_film'] ?>">
@@ -16,12 +19,10 @@ ob_start(); ?>
                 </div>
         <?php } ?>
 
-
 <?php
 
-$titre= "Liste des films";
+$titre= "Accueil";
 $titre_secondaire = "A l'affiche Aujourd'hui";
 // buffering end
 $contenu = ob_get_clean();
 require "view/template.php";
-

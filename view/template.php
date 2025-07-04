@@ -13,23 +13,25 @@
 <body>
     <div class="container">
         <header>
-            <img alt="Logo Drive-in dans un style neon" src="./public/img/DRIVE-IN.png"> 
+        <h1>Drive-In : <?= $titre ?></h1>
+            
             <nav>
                 <ul>
-                    <li class="button nav">FILMS</li>
-                    <li class="button nav">REALISATEURS</li>
-                    <li class="button nav">ACTEURS</li>
-                    <li class="button nav">ADMIN</li>
+                    <li><a class="button" href="./#">ACCEUIL</a></li>
+                    <li><a class="button" href="?action=listFilms">FILMS</a></li>
+                    <li><a class="button" href="?action=listRealisateurs">REALISATEURS</a></li>
+                    <li><a class="button" href="?action=listActeurs">ACTEURS</a></li>
+                    <li><a class="button" href="?action=admin">ADMIN</a></li>
                 </ul>
             </nav>
         </header>
     <nav>
     </nav>
     <main>
-        <h1 >PDO Cinema</h1>
-        <h2><?= $titre_secondaire ?></h2>
-        <?= $contenu ?>
-        
+        <div id='screen'> <!-- container screen-->
+            <h2><?= $titre_secondaire ?></h2> <!--à virer pour mettre dans les vue, bien le temps de la mise en place-->
+            <?= $contenu ?>
+        </div>
     </main>
     <footer>
         <small><a href= "#">Mentions légales, ETC...</a></small>

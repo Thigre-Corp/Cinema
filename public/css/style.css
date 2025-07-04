@@ -11,96 +11,95 @@
     padding :0;
 }
 
-body{
-    height: 1024px ;
-    width: 1440px ;
-    background: no-repeat center/260% url("../img/bg_driveIn.jpg");
-    background-position-y: -260px;
-    background-position-x: -1200px;
-}
-
-.container{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top:0;
-    left:0;
-    backdrop-filter: saturate(40%);
-}
-
-header{
-    position: absolute;
-    top: 0;
-    left: 0; 
-    width: 100%;
-    height: 108px;
-    background: no-repeat var(--upperGradient);
-    background-position-y: -50px;
-}
-        
-    nav{
-        width: 100vw;
-        display: flex;
-        flex-direction: row;
-        ul{
-           list-style: none;
-        }
-    }
-
-header img{
-        position: absolute;
-        z-index: 3;
-        transform-origin: center;
-        transform: translate(-85px, -125px) rotate(-22.06deg) scale(60%);
-    }
-
-.button{
-    width: 174px;
-    height: 54px;
-    background-color: var(--buttonColor);
-    border-radius: 10px;
-    color: var(--secondaryColor);
-    font-weight: 900;
-    text-align: center;
-}
-
-.button:hover{
-    background-color: var(--buttonColorActive);
-    transition: .5s;
-}
-
-main{
-    width: 1150px;
-    height: 526px;
-    position: absolute;
-    left: 127px;
-    top: 161px;
-
-}
-
-footer{
-    height: 100px;
-    width: 100vw;
-    background: no-repeat var(--upperGradient);
-    background-position-y: -50%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
-
+/*
+#screen{
+    display: flex;
+    flex-direction: row;
+}*/
 .cardFilmAccueil{
-    .affiche{
-        height: 423px;
-        width: 272px;
-        aspect-ratio: 1/1;
+    display: block;
+    width: 30vw;
+    border: 1px solid black;
+    margin: 10px;
+    img{
+        width: 100%;
+        aspect-ratio: 9/16;
     }
-    .titre{
-        position: absolute;
-        bottom: 0;
+
+    div{
+        text-align: center;
         background: var(--secondaryColor);
         color: var(--primaryColor);
         font-size: 28;
         font-weight: 400;
     }
+}
 
+.Ubox{
+    background-color: var(--buttonColor);
+    border-radius: 10px;
+}
+
+.cardFilmComplet{
+    display: grid;
+    grid-template-areas:
+        "affiche note    titre   real"
+        "affiche resume  resume  resume"
+        "affiche casting casting casting";
+    grid-template-columns: 4fr 1fr 5fr 2fr;
+    grid-template-rows: 1fr 3fr 1fr;
+    gap: .5em;
+    text-align: center;
+    border: 3px solid black;
+        img{
+            width: 100%;
+            grid-area: affiche;
+        }
+        .filmNote{
+            grid-area : note;
+        }
+        .filmTitreAnnee{
+            grid-area: titre;
+        }
+        .filmReal{
+            grid-area: real;
+        }
+        .filmResume{
+            grid-area: resume;
+        }
+        .casting{
+            grid-area: casting;
+        }
+}
+
+.cardProfil{
+    display: grid;
+    grid-template-areas:
+        "photo nom  nom"
+        "photo film collab"
+        "photo film collab";
+    grid-template-columns: repeat(1fr,3) ;
+    grid-template-rows: 1fr 4fr ;
+    gap: .5em;
+    text-align: center;
+    border: 3px solid black;
+        img{
+            width: 100%;
+            grid-area: photo;
+        }
+        .etatCivil{
+            grid-area : nom;
+        }
+        .film{
+            grid-area: film;
+        }
+        .collab{
+            grid-area: collab;
+        }
+        .filmResume{
+            grid-area: resume;
+        }
+        .casting{
+            grid-area: casting;
+        }
 }
