@@ -33,7 +33,7 @@ class CinemaController {
 
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-            SELECT p.personne_nom, p.personne_prenom
+            SELECT p.personne_nom, p.personne_prenom, p.personne_photoURL, p.id_personne
             FROM personne p
             RIGHT JOIN acteur a
             ON a.id_personne = p.id_personne

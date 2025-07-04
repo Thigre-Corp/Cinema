@@ -2,29 +2,26 @@
 
 ob_start(); ?>
 
-<p>Il y a <?= $requete->rowCount() ?> acteurs</p>
+<!--p>Il y a <?= $requete->rowCount() ?> acteurs</p-->
 
-<table>
-    <thead>
-        <tr>
-            <th>NOM</th>
-            <th>PRENOM</th>
-        </tr>
-    </thead>
-    <tbody>
         <?php
-            foreach($requete->fetchAll() as $acteur ){ ?>
-                <tr>
-                    <td><?= $acteur["personne_nom"] ?></td>
-                    <td><?= $acteur["personne_prenom"] ?></td>
-                <tr>
-        <?php } ?>
-    </tbody>
-</table>
+            foreach($requete->fetchAll() as $personne ){ 
+                ?>
+                <div class="cardProfilList">
+                    <a href="?action=detailPersonne&id=<?= $personne['id_personne'] ?>">
+                        <img class="Ubox" alt="où est l'affiche?"  src="./public/img/personne/<?= $personne['personne_photoURL'] ?>" >
+                            <div class="etatCivil Ubox">
+                                <h2><?=$personne['personne_prenom']?> <?=$personne['personne_nom']?></h2>
+                            </div>
+                    </a>
+                </div>
 
-<?php
+<?php }
 
 $titre= "Liste des acteurs";
 $titre_secondaire = "Liste des acteurs";
 $contenu = ob_get_clean();
 require "view/template.php";
+
+//buffering start
+ob_start(); ?>

@@ -8,7 +8,7 @@ include $class_name . '.php';
 
 $ctrlCinema = new CinemaController();
 
-$id = (isset($_GET["id"])) ? $_GET["id"] : null ; //$ctrlCinema->accueil(); // <-ajouter accueil ICI ou pas, à voir....
+$id = (isset($_GET["id"])) ? $_GET["id"] : null ; 
 
 
 if (isset($_GET["action"])){
