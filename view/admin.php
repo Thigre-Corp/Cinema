@@ -3,7 +3,8 @@
 ob_start(); ?>
 
             <div id="adminPage">
-                <div class="adminFilm"> <!-- administration des films-->
+<!-- administration des films-->
+                <div class="adminFilm"> 
                     <h3>Ajouter / modifier un film</h3>
                     <form action="index.php?action=adminFilm" name="film" method="POST"> 
                         <label for="idFilm">Créer ou modifier un film:</label>
@@ -56,8 +57,8 @@ ob_start(); ?>
                         <input type="submit" name="modFilm" value="ENVOYER">
                     </form>
                 </div>
-
-                <div class="adminPersonnes"> <!-- administration des personnes-->
+<!-- administration des personnes -->
+                <div class="adminPersonnes">
                     <h3>Ajouter / modifier une personne</h3>
                     <form action="index.php?action=adminPersonne" name="personne" method="POST">
                         <label for="idPersonne">Personnes:</label>
@@ -94,8 +95,8 @@ ob_start(); ?>
                         <input type="submit" name="modPersonne" value="ENVOYER">
                     </form>
                 </div>
-
-                <div class="adminCasting">  <!-- administration des castings-->
+<!-- administration des castings -->
+                <div class="adminCasting">  
                     <h3>Ajouter / modifier un casting</h3>
                     <form name="casting" method="POST">
                         <label for="personneNom">Nom:</label>
@@ -107,8 +108,8 @@ ob_start(); ?>
 
                     </form>
                 </div>
-
-                <div class="adminGenre">  <!-- administration des genres-->
+<!-- administration des genres -->
+                <div class="adminGenre">  
                     <h3>Ajouter / modifier un genre</h3>
                     <form action="index.php?action=adminGenre" name="genre" method="POST">
                         <label for="idGenre">Genre:</label>
@@ -131,7 +132,7 @@ ob_start(); ?>
                 </div>
             </div>
 
-
+<!-- fin HTML -->
 
 
 <?php

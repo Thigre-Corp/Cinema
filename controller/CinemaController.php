@@ -71,7 +71,7 @@ class CinemaController {
 
     public function detailFilm($id) { // ajouter casting / rôle, gref, la totale :)
         $pdo = Connect::seConnecter();
-        $requete = $pdo->prepare(
+        $requeteFilm = $pdo->prepare(
             "
                 SELECT f.* , CONCAT(f.film_duree DIV 60, 'H', f.film_duree MOD 60) AS duree, p.personne_nom, p.personne_prenom, p.id_personne
                 FROM film f
@@ -81,7 +81,30 @@ class CinemaController {
                 ON r.id_personne = p.id_personne
                 WHERE f.id_film = :id
             ");
-        $requete->execute(["id" =>$id]);
+        $requeteFilm->execute(["id" =>$id]);
+        $requeteCasting = $pdo->query(
+            "
+                SELECT c.id_film , r.id_role, r.role_nom , p.personne_nom, p.personne_prenom
+                FROM casting c 
+                INNER JOIN acteur a
+                ON c.id_acteur = a.id_acteur
+                INNER JOIN role r
+                ON c.id_role = r.id_role
+                INNER JOIN personne p
+                ON a.id_personne = p.id_personne
+            ");
+        $requeteActeur = $pdo->query("
+                SELECT p.personne_nom, p.personne_prenom, a.id_acteur
+                FROM personne p
+                RIGHT JOIN acteur a
+                ON a.id_personne = p.id_personne
+            ");
+        $requeteRole = $pdo->query("
+                SELECT r.role_nom, r.id_role
+                FROM role r
+            ");
+        
+
         require "view/detailFilm.php";
     }
 

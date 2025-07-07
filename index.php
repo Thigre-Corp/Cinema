@@ -95,6 +95,16 @@ if (isset($_GET["action"])){ // keep previous action to get into admin page.
                 }
             $ctrlCinema->admin();
             break;
+//administration des Rôles
+        case "adminRole" :
+            var_dump($i);
+            str(camebnrert);
+
+
+            
+            $ctrlCinema->detailFilm($id);
+            break;
+
 //default : retour à l'accueil
         default: $ctrlCinema->accueil(); // retour à l'accueil en cas de valeur non traitée.
     }
