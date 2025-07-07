@@ -54,19 +54,36 @@ class CinemaController {
         require "view/listRealisateurs.php";
     }
 
-    //detail acteur selon id ---- pas nécessaire / cf détail personne
-/*
-    public function detailActeur($id) {
+    //Creer casting
+    public function creerCasting($idFilm, $idActeur, $idRole) {
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
-            SELECT *
-            FROM personne
-            WHERE id_personne = :id
+            INSERT INTO casting (id_film , id_acteur, id_role)
+            VALUES (:idFilm, :idActeur, :idRole)
             ");
-        $requete->execute(["id" =>$id]);
-        require "view/detailActeur.php";
+        $requete->execute([
+            "idFilm" => $idFilm,
+            "idActeur" => $idActeur,
+            "idRole" => $idRole
+        ]);
     }
-*/
+
+    //supprimer casting
+    public function supprimerCasting($idFilm, $idRole) {
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare("
+            DELETE FROM casting 
+            WHERE (id_film = :idFilm ) AND( id_role = :idRole)
+            ");
+        $requete->execute([
+            "idFilm" => $idFilm,
+            "idRole" => $idRole
+        ]);
+    }
+
+
+
+
     //détail film selon id
 
     public function detailFilm($id) { // ajouter casting / rôle, gref, la totale :)
@@ -103,7 +120,18 @@ class CinemaController {
                 SELECT r.role_nom, r.id_role
                 FROM role r
             ");
-        
+        $requeteGenre = $pdo->query("
+                SELECT g.*
+                FROM genre g  
+            ");
+        $requeteGenreFilm = $pdo->prepare("
+                SELECT ge.id_genre, ge.genre_libelle, a.id_film
+						FROM genre ge 
+						LEFT JOIN appartenir a
+	               ON ge.id_genre = a.id_genre
+	               WHERE a.id_film = :idFilmid
+                   ");
+        $requeteGenreFilm->execute(["id" =>$id]);
 
         require "view/detailFilm.php";
     }
@@ -286,7 +314,7 @@ class CinemaController {
             }
 
         }
-//CREATION DE PERSONNE        
+    //CREATION DE PERSONNE        
         else if($personneForm["idPersonne"] ==  '0') {
             $pdo = Connect::seConnecter();
             $requete = $pdo->prepare(

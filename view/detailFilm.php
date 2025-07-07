@@ -1,12 +1,9 @@
 <?php
 //buffering start
-ob_start(); ?>
+ob_start(); 
 
+$film = $requeteFilm->fetch();
 
-        <?php
-            $film = $requeteFilm->fetch();
-
-           // var_dump($requeteCasting->fetchAll());
                 ?>
                 <div class="cardFilmComplet">
                     <img class="Ubox" alt="où est l'affiche?"  src="./public/img/film/<?= $film['film_afficheURL'] ?>" >
@@ -30,7 +27,7 @@ ob_start(); ?>
                                             <tr>
                                                 <td><?=$casting['personne_prenom']." ".$casting['personne_nom'] ?></td>
                                                 <td><?=$casting['role_nom']?></td> 
-                                                <td><input type="submit" name="modCasting" value="Supprimer"></input></td>
+                                                <td><input type="submit" name="<?=$casting['id_role']?>" value="Supprimé"></input></td>
                                             </tr>
 
                                             <?php
@@ -66,16 +63,27 @@ ob_start(); ?>
                                                         ?>
                                             </select>
                                     </td>
-                                    <td><input type="submit" name="modCasting" value="Appliquer"></input></td>
+                                    <td><input type="submit" name="modCasting" value="Ajouté"></input></td>
                                 </tr>
-                                   
-                                    
-                            
                             </table>
                          </form>
                     </div>
+                    <div class="genre Ubox"><h3>Genre</h3>
+                        <form>
+                    <?php
+                        foreach($requeteGenre->fetchAll() as $value){
+                           ?>
+                            <div>
+                                <label for="<?=$value['id_genre']?>"><?=$value['genre_libelle']?></label>
+                                <input type='checkbox' id="<?=$value['id_genre']?>" <?= ($value['id_film']==$film['id_film'])? "checked" : "" ?>></input>
+                            </div>
+                       <?php
+                        }
+                    ?>
+                        <input type='submit' value='Update'></input>
+                        </form>
+                    </div>
                 </div>
-        <?php //} ?>
 
 <?php
 $titre= $film['film_titre'];

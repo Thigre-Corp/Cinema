@@ -97,11 +97,17 @@ if (isset($_GET["action"])){ // keep previous action to get into admin page.
             break;
 //administration des Rôles
         case "adminRole" :
-            var_dump($i);
-            str(camebnrert);
-
-
-            
+            if(isset($_POST['modCasting'])){
+                // create new cast with id_film, idActeur and idrole
+                $ctrlCinema->creerCasting($id, $_POST['idActeur'], $_POST['idRole']);
+            }
+            else{
+                foreach($_POST as $key => $value){
+                    if($value == 'Supprimé'){
+                        $ctrlCinema->supprimerCasting($id, $key);
+                    }
+                }
+            }
             $ctrlCinema->detailFilm($id);
             break;
 

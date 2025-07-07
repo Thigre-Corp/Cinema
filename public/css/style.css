@@ -46,8 +46,8 @@
     display: grid;
     grid-template-areas:
         "affiche note    titre   real"
-        "affiche resume  resume  resume"
-        "affiche casting casting casting";
+        "affiche resume  resume  genre"
+        "affiche casting casting genre";
     grid-template-columns: 4fr 1fr 5fr 2fr;
     grid-template-rows: 1fr 3fr 1fr;
     gap: .5em;
@@ -71,6 +71,9 @@
         }
         .casting{
             grid-area: casting;
+        }
+        .genre{
+            grid-area: genre;
         }
 }
 
