@@ -31,6 +31,7 @@ if (isset($_GET["action"])){ // keep previous action to get into admin page.
         case "admin" :
             $ctrlCinema->admin(); 
             break;
+//administration des Films
         case "adminFilm" : 
             if (isset($_POST['modFilm'])) {
                 $filtersArguments = array(
@@ -53,14 +54,15 @@ if (isset($_GET["action"])){ // keep previous action to get into admin page.
                     $ctrlCinema->adminFilm($filteredPost);
                     /*supression du film ...*/
                 }
-                else{ // modifier film.
+                else{ // modifier film. 
 
                     $ctrlCinema->adminFilm($filteredPost);
                 }
             }
             $ctrlCinema->admin();
             break;
-        case "adminGenre" :                                                                 /////////////////////////// un peu de la merde de if/else, idem ds admin film
+//administration des Genres
+        case "adminGenre" :
             if (isset($_POST['modGenre'])) {
                 $filtersArguments = array(
                         'idGenre' => FILTER_VALIDATE_INT,
@@ -73,7 +75,8 @@ if (isset($_GET["action"])){ // keep previous action to get into admin page.
                 }
             $ctrlCinema->admin();
             break;
-        case "adminPersonne" :                                                                 /////////////////////////// un peu de la merde de if/else, idem ds admin film
+//administration des Personnes
+        case "adminPersonne" :
             if (isset($_POST['modPersonne'])) {
                 $filtersArguments = array(
                         'idPersonne' => FILTER_VALIDATE_INT,
@@ -92,12 +95,11 @@ if (isset($_GET["action"])){ // keep previous action to get into admin page.
                 }
             $ctrlCinema->admin();
             break;
-
-
-
+//default : retour à l'accueil
         default: $ctrlCinema->accueil(); // retour à l'accueil en cas de valeur non traitée.
     }
 }
+
 else{
     $ctrlCinema->accueil();
 }

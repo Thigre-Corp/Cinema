@@ -132,7 +132,7 @@ class CinemaController {
     }
 
     public function adminFilm($filmForm){
-
+    //suppression du film
         if(isset($filmForm["supprimerFilm"])){
             if ($filmForm['supprimerFilm'] == 'on' && $filmForm["idFilm"] !=  '0' ){
                 $pdo = Connect::seConnecter();
@@ -148,7 +148,7 @@ class CinemaController {
             }
 
         }
-        
+    //création du film        
         else if ($filmForm["idFilm"] ==  '0') {
             $pdo = Connect::seConnecter();
             $requete = $pdo->prepare(
@@ -167,13 +167,10 @@ class CinemaController {
             ]);
             echo "<script type='text/javascript'>alert('Film créé');</script>" ;
         }
-
-        //require "view/admin.php";
-
     }
 
     public function adminGenre($genreForm){
-
+    //supression du Genre
        if(isset($genreForm["supprimerGenre"])){
             if ($genreForm['supprimerGenre'] == 'on' && $genreForm["idGenre"] !=  '0' ){
                 $pdo = Connect::seConnecter();
@@ -189,7 +186,7 @@ class CinemaController {
             }
 
         }
-        
+    //création du Genre    
         else if ($genreForm["idGenre"] ==  '0') {
             $pdo = Connect::seConnecter();
             $requete = $pdo->prepare(
@@ -197,7 +194,6 @@ class CinemaController {
                 INSERT INTO `genre` ( `genre_libelle`) 
                 VALUES ( :genreLibelle);
             ");
-
             $filtersArguments = array(
                         'idGenre' => FILTER_VALIDATE_INT,
                         'genreLibelle' => FILTER_SANITIZE_FULL_SPECIAL_CHARS ,
@@ -208,16 +204,12 @@ class CinemaController {
             $requete->execute([
                 "genreLibelle" => htmlspecialchars($genreForm["genreLibelle"]),
             ]);
-
             echo "<script type='text/javascript'>alert('Genre créé');</script>" ;
         }
-
-        //require "view/admin.php";
-
     }
 
     public function adminPersonne($personneForm){
-//SUPRESSION DE PERSONNE
+    //SUPRESSION DE PERSONNE
        if(isset($personneForm["supprimerPersonne"])){
             if ($personneForm['supprimerPersonne'] == 'on' && $personneForm["idPersonne"] !=  '0' ){
                 $pdo = Connect::seConnecter();
@@ -236,7 +228,7 @@ class CinemaController {
                 ]);
                 $deleteIDs = $requete->fetch();
 
-    //si une ID acteur existe, la supprimer
+        //si une ID acteur existe, la supprimer
                 if(is_int($deleteIDs["id_acteur"])){
                     $requete = $pdo->prepare(
                         "
@@ -247,7 +239,7 @@ class CinemaController {
                         "id" => $personneForm["idPersonne"]  
                     ]);
                 }
-    //si une ID realisateur existe, la supprimer
+        //si une ID realisateur existe, la supprimer
                 if(is_int($deleteIDs["id_realisateur"])){
                     $requete = $pdo->prepare(
                         "
@@ -258,7 +250,7 @@ class CinemaController {
                         "id" => $personneForm["idPersonne"]  
                     ]);
                 }
-    //supprimer enfin la personne
+     //supprimer enfin la personne
                 $requete = $pdo->prepare(
                     "
                     DELETE FROM `personne`
