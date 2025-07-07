@@ -17,6 +17,12 @@
     flex-direction: row;
 }
 */
+
+.Ubox{
+    background-color: var(--buttonColor);
+    border-radius: 10px;
+}
+
 .cardFilmAccueil{
     display: block;
     width: 30vw;
@@ -34,11 +40,6 @@
         font-size: 28;
         font-weight: 400;
     }
-}
-
-.Ubox{
-    background-color: var(--buttonColor);
-    border-radius: 10px;
 }
 
 .cardFilmComplet{
@@ -103,4 +104,64 @@
         .casting{
             grid-area: casting;
         }
+}
+
+.cardProfilList{
+    display: block;
+    width: 30vw;
+    border: 1px solid black;
+    margin: 10px;
+    img{
+        width: 100%;
+        aspect-ratio: 9/16; /*à revoir --- pas bon du tout.....*/
+    }
+
+    div{
+        text-align: center;
+        background: var(--secondaryColor);
+        color: var(--primaryColor);
+        font-size: 28;
+        font-weight: 400;
+    }
+}
+
+
+
+#adminPage{
+    display: grid;
+    grid-template-areas:
+        "film casting personne"
+        "film genre personne";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: .5em;
+    border: 2px solid black;
+}
+
+
+.adminFilm{
+    border: 2px solid black;
+    grid-area: film;
+    display: flex;
+    flex-direction: column;
+    * {
+        display: inline;
+    }
+}
+
+.adminPersonnes{
+        border: 2px solid black;
+
+    grid-area: personne;
+}
+.adminCasting{
+        border: 2px solid black;
+
+    grid-area: casting;
+
+}
+.adminGenre{
+        border: 2px solid black;
+
+    grid-area: genre;
 }
