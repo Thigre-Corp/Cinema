@@ -279,7 +279,7 @@ class CinemaController {
        $this::modFilm($id);
     }
 
-    public function udDeleteRole($id, $$filteredActorID, $filteredRoleID){
+    public function udDeleteRole($id, $filteredActorID, $filteredRoleID){
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare(
             "
