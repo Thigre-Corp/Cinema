@@ -11,15 +11,72 @@
     padding :0;
 }
 
-/*
-#screen{
+body{
+    background-color: black;
     display: flex;
-    flex-direction: row;
+    flex-direction: row ;
+    justify-content: space-around;
+    align-self:center;
 }
-*/
+
+.container{
+    margin: 2vh 2vw;
+    height: 90vh;
+    width: 80vw;
+/*     background-image: url("../img/bg_driveIn.jpg");
+ */    background-repeat: no-repeat;
+    background-size: 250%;
+    background-position: center ;
+    header{
+        margin-bottom: 20px;
+        height: 108px;
+        h1{
+            /*display: none;*/
+        }
+        img{
+            z-index: -1;
+            transform: rotate(-25deg) scale(80%) translateX(-10em);
+            position: absolute;
+            top: -5vh;
+        }
+    }
+    nav ul{
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+#screen{
+    /*height: 80vh;*/
+    box-shadow: 0 0 5em whitesmoke;
+    background-color: var(--primaryColorAlpha);
+    border-radius: 10px;
+}
+
+
+
+.button{
+    height: 54px;
+    width: 177px;
+    text-decoration: none;
+    color: var(--secondaryColor);
+    font-size: 2em;
+    background-color: var(--buttonColor);
+    border-radius: 10px;
+    margin: 10px;
+    padding: .5em;
+
+    &:hover{
+        background-color: var(--buttonColorActive);
+    }
+
+}
+
 
 .Ubox{
-    background-color: var(--buttonColor);
+    background-color: var(--secondaryColor);
     border-radius: 10px;
 }
 
@@ -41,19 +98,19 @@
         font-weight: 400;
     }
 }
-
 .cardFilmComplet{
+    height: 100%;
     display: grid;
     grid-template-areas:
-        "affiche note    titre   real"
-        "affiche resume  resume  genre"
-        "affiche casting casting genre";
-    grid-template-columns: 4fr 1fr 5fr 2fr;
-    grid-template-rows: 1fr 3fr 1fr;
+        "affiche note    titre titre   real"
+        "affiche resume  resume  resume resume"
+        "affiche casting casting genre genre";
+    grid-template-columns: 4fr 1fr 2fr 2fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
     gap: .5em;
     text-align: center;
-    border: 3px solid black;
-        img{
+    border: 3px none black;
+        .filmAffiche{
             width: 100%;
             grid-area: affiche;
         }
@@ -76,7 +133,6 @@
             grid-area: genre;
         }
 }
-
 .cardProfil{
     display: grid;
     grid-template-areas:
@@ -108,7 +164,6 @@
             grid-area: casting;
         }
 }
-
 .cardProfilList{
     display: block;
     width: 30vw;
@@ -127,9 +182,6 @@
         font-weight: 400;
     }
 }
-
-
-
 #adminPage{
     display: grid;
     grid-template-areas:
@@ -140,8 +192,6 @@
     gap: .5em;
     border: 2px solid black;
 }
-
-
 .adminFilm{
     border: 2px solid black;
     grid-area: film;
@@ -151,7 +201,6 @@
         display: inline;
     }
 }
-
 .adminPersonnes{
         border: 2px solid black;
 

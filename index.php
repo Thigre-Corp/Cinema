@@ -31,6 +31,58 @@ if (isset($_GET["action"])){ // keep previous action to get into admin page.
         case "admin" :
             $ctrlCinema->admin(); 
             break;
+        case "modFilm":
+            $ctrlCinema->modFilm($id);
+            break;
+        case "updateFilm":
+            if( isset($_GET['subForm'])){
+                switch($_GET['subForm']){
+                    case "affiche":
+                        $filteredPost = htmlspecialchars($_POST['filmAffiche']);
+                        $ctrlCinema->udAffiche($id, $filteredPost);
+                        break;
+                    case "note":
+                        $filteredPost = intval(htmlspecialchars($_POST['filmNote'])); 
+                        $ctrlCinema->udNote($id, $filteredPost);
+                        break;
+                    case "titre":
+                        $filteredPost = htmlspecialchars($_POST['filmTitre']);
+                        $ctrlCinema->udTitre($id, $filteredPost);
+                        break;
+                    case "annee":
+                        $filteredPost = intval(htmlspecialchars($_POST['filmAnnee']));
+                        $ctrlCinema->udAnnee($id, $filteredPost);
+                        break;
+                    case "duree":
+                        $filteredPost = intval(htmlspecialchars($_POST['filmDuree']));
+                        $ctrlCinema->udDuree($id, $filteredPost);
+                        break;
+                    case "real":
+                        $filteredPost = intval(htmlspecialchars($_POST['filmReal']));
+                        $ctrlCinema->udReal($id, $filteredPost);
+                        break;
+                    case "resume":
+                        $filteredPost = htmlspecialchars($_POST['filmResume']);
+                        $ctrlCinema->udResume($id, $filteredPost);
+                        break;
+                    case "deleteC":
+                        $filteredPost = (explode("*", (array_key_first($_POST)))); // $filteredPost[0] : id rôle, $filteredPost[1] : id acteur
+                        $filteredActorID = intval($filteredPost[1]);
+                        $filteredRoleID = intval($filteredPost[0]);
+                        $ctrlCinema->udDeleteRole($id, $$filteredActorID, $filteredRoleID);
+                        break;
+
+                    case "addC":
+                        $filteredActorID = intval(htmlspecialchars($_POST['idActeur']));
+                        $filteredRoleID = intval(htmlspecialchars($_POST['idRole']));
+                        
+                    case "genre":
+                        var_dump(htmlspecialchars($_POST));
+                        aka();
+
+                }
+            }
+            break;
 //administration des Films
         case "adminFilm" : 
             if (isset($_POST['modFilm'])) {

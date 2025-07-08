@@ -5,18 +5,16 @@ ob_start(); ?>
             <div id="adminPage">
 <!-- administration des films-->
                 <div class="adminFilm"> 
-                    <h3>Ajouter / modifier un film</h3>
+                    <h3>Ajouter  un film</h3>
                     <form action="index.php?action=adminFilm" name="film" method="POST"> 
-                        <label for="idFilm">Créer ou modifier un film:</label>
+                        <!-- <label for="idFilm">Créer ou modifier un film:</label>
                             <select id="idFilm" name="idFilm">
                                 <option selected value="0">-créer un nouveau film-</option>
                                 <?php
-                                    foreach($requeteIdFilm->fetchAll() as $idFilm ){
-                                        ?>
-                                        <option value="<?=$idFilm['id_film']?>"><?=$idFilm['film_titre']?></option>
-                                        <?php
-                                    }
-                                    ?>                                
+                                 
+                                    //     <?php
+                                    // }
+                                    ?>                                 -->
                             </select><br>
                         <label for="titreFilm">Titre:</label>
                             <input type="text" id="titreFilm" name="titreFilm"><br>
@@ -59,20 +57,9 @@ ob_start(); ?>
                 </div>
 <!-- administration des personnes -->
                 <div class="adminPersonnes">
-                    <h3>Ajouter / modifier une personne</h3>
+                    <h3>Ajouter  Personne</h3>
                     <form action="index.php?action=adminPersonne" name="personne" method="POST">
-                        <label for="idPersonne">Personnes:</label>
-                            <select id="idPersonne" name="idPersonne">
-                                <option selected value="0">-créer une personne-</option>
-                                <?php
-                                    foreach($requetePersonne as $personne ){
-                                        var_dump($personne);
-                                        ?>
-                                        <option value="<?=$personne['id_personne']?>"><?=$personne['personne_nom']." ".$personne['personne_prenom']?></option>
-                                        <?php
-                                    }
-                                    ?>
-                            </select><br>
+                        
                         <label for="personneNom">Nom:</label>
                             <input type="text" id="personneNom" name="personneNom"></input><br>
                         <label for="personnePrenom">Prénom:</label>
@@ -97,7 +84,7 @@ ob_start(); ?>
                 </div>
 <!-- administration des castings -->
                 <div class="adminCasting">  
-                    <h3>Ajouter / modifier un casting</h3>
+                    <h3>Ajouter  role</h3>
                     <form name="casting" method="POST">
                         <label for="personneNom">Nom:</label>
                         <input type="text" id="personneNom" name="personneNom"></input>
@@ -110,7 +97,7 @@ ob_start(); ?>
                 </div>
 <!-- administration des genres -->
                 <div class="adminGenre">  
-                    <h3>Ajouter / modifier un genre</h3>
+                    <h3>Ajouter  un genre</h3>
                     <form action="index.php?action=adminGenre" name="genre" method="POST">
                         <label for="idGenre">Genre:</label>
                             <select id="idGenre" name="idGenre">
