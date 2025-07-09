@@ -138,8 +138,7 @@ $film = $requeteFilm->fetch();
                             </select>
                     </td>
                     <td>
-                        <input type='submit' value='add'></input>
-                                
+                        <input type='submit' value='add'></input>  
                     </td>
                 </form>
             </tr>

@@ -263,7 +263,10 @@ class CinemaController {
                 SET id_realisateur = :filteredPost
                 WHERE  id_film = :id
             ");
-        $requete->execute(["id" =>$id , "filteredPost" => $filteredPost]);
+        $requete->execute([
+            "id" =>$id , 
+            "filteredPost" => $filteredPost
+        ]);
        $this::modFilm($id);
     }
 
@@ -279,14 +282,57 @@ class CinemaController {
        $this::modFilm($id);
     }
 
-    public function udDeleteRole($id, $$filteredActorID, $filteredRoleID){
+    public function udDeleteRole($id, $filteredActorID, $filteredRoleID){
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare(
             "
                 DELETE FROM casting
-                WHERE......
+                WHERE id_film = :id AND id_acteur = :filteredActorID AND id_role = :filteredRoleID
             ");
-        $requete->execute(["id" =>$id , "filteredPost" => $filteredPost]);
+        $requete->execute([
+            "id" =>$id ,
+            "filteredActorID" => $filteredActorID,
+            "filteredRoleID" => $filteredRoleID
+        ]);
+       $this::modFilm($id);
+    }
+
+    public function udAddRole($id, $filteredActorID, $filteredRoleID){
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare(
+            "
+                INSERT INTO casting ( id_film, id_role, id_acteur)
+                VALUES (:id, :filteredRoleID,  :filteredActorID)
+            ");
+        $requete->execute([
+            "id" =>$id ,
+            "filteredActorID" => $filteredActorID,
+            "filteredRoleID" => $filteredRoleID
+        ]);
+       $this::modFilm($id);
+    }
+
+    public function udGenre($id, $filteredPost){
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare(
+            "
+                DELETE FROM appartenir
+                WHERE id_film = :id
+            ");
+        $requete->execute([
+            "id" =>$id 
+        ]);
+        foreach($filteredPost as $genre){
+            $requete = $pdo->prepare(
+                "
+                    INSERT INTO appartenir ( id_film, id_genre)
+                    VALUES ( :id , :genre)
+                ");
+            $requete->execute([
+                "id" =>$id,
+                "genre" =>$genre 
+            ]);
+        }
        $this::modFilm($id);
     }
 

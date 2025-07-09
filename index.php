@@ -69,17 +69,19 @@ if (isset($_GET["action"])){ // keep previous action to get into admin page.
                         $filteredPost = (explode("*", (array_key_first($_POST)))); // $filteredPost[0] : id rôle, $filteredPost[1] : id acteur
                         $filteredActorID = intval($filteredPost[1]);
                         $filteredRoleID = intval($filteredPost[0]);
-                        $ctrlCinema->udDeleteRole($id, $$filteredActorID, $filteredRoleID);
+                        $ctrlCinema->udDeleteRole($id, $filteredActorID, $filteredRoleID);
                         break;
 
                     case "addC":
                         $filteredActorID = intval(htmlspecialchars($_POST['idActeur']));
                         $filteredRoleID = intval(htmlspecialchars($_POST['idRole']));
-                        
-                    case "genre":
-                        var_dump(htmlspecialchars($_POST));
-                        aka();
+                        $ctrlCinema->udAddRole($id, $filteredActorID, $filteredRoleID);
+                        break;
 
+                    case "genre":
+                        $filteredPost = array_keys($_POST);
+                        $ctrlCinema->udGenre($id, $filteredPost);
+                        break;
                 }
             }
             break;
