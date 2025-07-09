@@ -1,12 +1,14 @@
 <?php
 
 use Controller\CinemaController;
+use Controller\FilmController;
 
 spl_autoload_register(function ($class_name){
 include $class_name . '.php';
 }); // charge ttes les classes
 
 $ctrlCinema = new CinemaController();
+$ctrlFilm = new FilmController();
 
 $id = (isset($_GET["id"])) ? $_GET["id"] : null ; 
 
@@ -32,55 +34,53 @@ if (isset($_GET["action"])){ // keep previous action to get into admin page.
             $ctrlCinema->admin(); 
             break;
         case "modFilm":
-            $ctrlCinema->modFilm($id);
+            $ctrlFilm->modFilm($id);
             break;
         case "updateFilm":
-            if( isset($_GET['subForm'])){
+            if(isset($_GET['subForm'])){
                 switch($_GET['subForm']){
                     case "affiche":
-                        $filteredPost = htmlspecialchars($_POST['filmAffiche']);
-                        $ctrlCinema->udAffiche($id, $filteredPost);
+                        $filteredPost = filter_var($_POST['filmAffiche'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                        $ctrlFilm->updateAffiche($id, $filteredPost);
                         break;
                     case "note":
-                        $filteredPost = intval(htmlspecialchars($_POST['filmNote'])); 
-                        $ctrlCinema->udNote($id, $filteredPost);
+                        $filteredPost = filter_var(($_POST['filmNote']), FILTER_VALIDATE_INT); 
+                        $ctrlFilm->updateNote($id, $filteredPost);
                         break;
                     case "titre":
-                        $filteredPost = htmlspecialchars($_POST['filmTitre']);
-                        $ctrlCinema->udTitre($id, $filteredPost);
+                        $filteredPost = filter_var($_POST['filmTitre'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                        $ctrlFilm->updateTitre($id, $filteredPost);
                         break;
                     case "annee":
-                        $filteredPost = intval(htmlspecialchars($_POST['filmAnnee']));
-                        $ctrlCinema->udAnnee($id, $filteredPost);
+                        $filteredPost = filter_var(($_POST['filmAnnee']), FILTER_VALIDATE_INT);
+                        $ctrlFilm->updateAnnee($id, $filteredPost);
                         break;
                     case "duree":
-                        $filteredPost = intval(htmlspecialchars($_POST['filmDuree']));
-                        $ctrlCinema->udDuree($id, $filteredPost);
+                        $filteredPost = filter_var(($_POST['filmDuree']), FILTER_VALIDATE_INT);
+                        $ctrlFilm->updateDuree($id, $filteredPost);
                         break;
                     case "real":
-                        $filteredPost = intval(htmlspecialchars($_POST['filmReal']));
-                        $ctrlCinema->udReal($id, $filteredPost);
+                        $filteredPost = filter_var(($_POST['filmReal']), FILTER_VALIDATE_INT);
+                        $ctrlFilm->updateReal($id, $filteredPost);
                         break;
                     case "resume":
-                        $filteredPost = htmlspecialchars($_POST['filmResume']);
-                        $ctrlCinema->udResume($id, $filteredPost);
+                        $filteredPost = filter_var($_POST['filmResume'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                        $ctrlFilm->updateResume($id, $filteredPost);
                         break;
                     case "deleteC":
                         $filteredPost = (explode("*", (array_key_first($_POST)))); // $filteredPost[0] : id rôle, $filteredPost[1] : id acteur
-                        $filteredActorID = intval($filteredPost[1]);
-                        $filteredRoleID = intval($filteredPost[0]);
-                        $ctrlCinema->udDeleteRole($id, $filteredActorID, $filteredRoleID);
+                        $filteredActorID = filter_var($filteredPost[1], FILTER_VALIDATE_INT);
+                        $filteredRoleID = filter_var($filteredPost[0], FILTER_VALIDATE_INT);
+                        $ctrlFilm->updateDeleteRole($id, $filteredActorID, $filteredRoleID);
                         break;
-
                     case "addC":
-                        $filteredActorID = intval(htmlspecialchars($_POST['idActeur']));
-                        $filteredRoleID = intval(htmlspecialchars($_POST['idRole']));
-                        $ctrlCinema->udAddRole($id, $filteredActorID, $filteredRoleID);
+                        $filteredActorID = filter_var(($_POST['idActeur']), FILTER_VALIDATE_INT);
+                        $filteredRoleID = filter_var(($_POST['idRole']), FILTER_VALIDATE_INT);
+                        $ctrlFilm->updateAddRole($id, $filteredActorID, $filteredRoleID);
                         break;
-
                     case "genre":
-                        $filteredPost = array_keys($_POST);
-                        $ctrlCinema->udGenre($id, $filteredPost);
+                        $filteredPost = filter_var_array(array_keys($_POST), FILTER_VALIDATE_INT);
+                        $ctrlFilm->updateGenre($id, $filteredPost);
                         break;
                 }
             }
