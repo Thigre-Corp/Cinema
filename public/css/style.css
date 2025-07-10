@@ -17,22 +17,21 @@ body{
     flex-direction: row ;
     justify-content: space-around;
     align-self:center;
+    background-image: url("../img/bg_driveIn.png");
+    background-repeat: no-repeat;
+    background-position: bottom ;
 }
 
 .container{
     margin: 2vh 2vw;
     height: 90vh;
     width: 80vw;
-/*     background-image: url("../img/bg_driveIn.jpg");
- */    background-repeat: no-repeat;
+
     background-size: 250%;
     background-position: center ;
     header{
         margin-bottom: 20px;
         height: 108px;
-        h1{
-            /*display: none;*/
-        }
         img{
             z-index: -1;
             transform: rotate(-25deg) scale(80%) translateX(-10em);
@@ -78,6 +77,7 @@ body{
 .Ubox{
     background-color: var(--secondaryColor);
     border-radius: 10px;
+    /*backdrop-filter: grayscale(100%);*/
 }
 
 .cardFilmAccueil{
@@ -185,35 +185,42 @@ body{
 #adminPage{
     display: grid;
     grid-template-areas:
-        "film casting personne"
-        "film genre personne";
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+        "addfilm addRole addPersonne"
+        "addfilm suppRole addPersonne"
+        "addfilm addGenre addPersonne"
+        "suppFilm suppGenre suppPersonne";
     gap: .5em;
-    border: 2px solid black;
 }
-.adminFilm{
-    border: 2px solid black;
-    grid-area: film;
+.addFilm{
+    grid-area: addfilm;
     display: flex;
     flex-direction: column;
     * {
         display: inline;
     }
 }
-.adminPersonnes{
-        border: 2px solid black;
-
-    grid-area: personne;
+.suppFilm{
+    grid-area: suppFilm;
 }
-.adminCasting{
-        border: 2px solid black;
-
-    grid-area: casting;
+.addPersonne{
+    grid-area: addPersonne;
+}
+.suppPersonne{
+    grid-area: suppPersonne;
+}
+.addRole{
+    grid-area: addRole;
+}
+.suppRole{
+    grid-area: suppRole;
 
 }
-.adminGenre{
-        border: 2px solid black;
-
-    grid-area: genre;
+.addGenre{
+    grid-area: addGenre;
 }
+.suppGenre{
+    grid-area: suppGenre;
+}
+
+
+

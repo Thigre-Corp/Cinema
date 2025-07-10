@@ -2,6 +2,7 @@
 
 use Controller\CinemaController;
 use Controller\FilmController;
+use Controller\AdminController;
 
 spl_autoload_register(function ($class_name){
 include $class_name . '.php';
@@ -9,6 +10,7 @@ include $class_name . '.php';
 
 $ctrlCinema = new CinemaController();
 $ctrlFilm = new FilmController();
+$ctrlAdmin = new AdminController();
 
 $id = (isset($_GET["id"])) ? $_GET["id"] : null ; 
 
@@ -31,7 +33,7 @@ if (isset($_GET["action"])){ // keep previous action to get into admin page.
             $ctrlCinema->detailPersonne($id); 
             break;
         case "admin" :
-            $ctrlCinema->admin(); 
+            $ctrlAdmin->admin(); 
             break;
         case "modFilm":
             $ctrlFilm->modFilm($id);
@@ -86,8 +88,8 @@ if (isset($_GET["action"])){ // keep previous action to get into admin page.
             }
             break;
 //administration des Films
-        case "adminFilm" : 
-            if (isset($_POST['modFilm'])) {
+        case "addFilm" : 
+            if (isset($_POST['addFilm'])) {
                 $filtersArguments = array(
                         'idFilm' => FILTER_VALIDATE_INT,
                         'titreFilm' => FILTER_SANITIZE_FULL_SPECIAL_CHARS ,
@@ -96,48 +98,41 @@ if (isset($_GET["action"])){ // keep previous action to get into admin page.
                         'noteFilm' => FILTER_VALIDATE_INT ,
                         'afficheFilmURL' => FILTER_SANITIZE_FULL_SPECIAL_CHARS ,
                         'idReal' => FILTER_VALIDATE_INT,
-                        'idGenre' => FILTER_SANITIZE_ENCODED ,
+                        'idGenre' => FILTER_VALIDATE_INT ,
                         'resumeFilm' => FILTER_SANITIZE_FULL_SPECIAL_CHARS ,
-                        'modFilm' => FILTER_SANITIZE_ENCODED,
-                        'supprimerFilm' => FILTER_SANITIZE_FULL_SPECIAL_CHARS
                     );
                 $filteredPost = filter_input_array(INPUT_POST, $filtersArguments, true);
-
-                if($filteredPost['supprimerFilm'] == 'on'){
-                   
-                    $ctrlCinema->adminFilm($filteredPost);
-                    /*supression du film ...*/
-                }
-                else{ // modifier film. 
-
-                    $ctrlCinema->adminFilm($filteredPost);
-                }
+                $ctrlAdmin->addFilm($filteredPost);
             }
-            $ctrlCinema->admin();
+            break;
+        case "suppFilm" :
+            if (isset($_POST['suppFilm'])) {
+                $filteredPost = filter_var($_POST['idFilm'], FILTER_VALIDATE_INT);
+                $ctrlAdmin->suppFilm($filteredPost);
+            }
             break;
 //administration des Genres
-        case "adminGenre" :
-            if (isset($_POST['modGenre'])) {
-                $filtersArguments = array(
-                        'idGenre' => FILTER_VALIDATE_INT,
-                        'genreLibelle' => FILTER_SANITIZE_FULL_SPECIAL_CHARS ,
-                        'modGenre' => FILTER_SANITIZE_ENCODED,
-                        'supprimerGenre' => FILTER_SANITIZE_FULL_SPECIAL_CHARS
-                    );
-                $filteredPost = filter_input_array(INPUT_POST, $filtersArguments, true);
-                $ctrlCinema->adminGenre($filteredPost);
+        case "addGenre" :
+            if (isset($_POST['addGenre'])) {
+                $filteredPost = filter_var($_POST['genreLibelle'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $ctrlAdmin->addGenre($filteredPost);
+            }
+            break;
+        case "suppGenre" :
+            if (isset($_POST['suppGenre'])) {
+                $filteredPost = filter_var($_POST['idGenre'], FILTER_VALIDATE_INT);
+                $ctrlAdmin->suppGenre($filteredPost);
                 }
-            $ctrlCinema->admin();
             break;
 //administration des Personnes
-        case "adminPersonne" :
-            if (isset($_POST['modPersonne'])) {
+        case "addPersonne" :
+            if (isset($_POST['addPersonne'])) {
                 $filtersArguments = array(
                         'idPersonne' => FILTER_VALIDATE_INT,
                         'personneNom' => FILTER_SANITIZE_FULL_SPECIAL_CHARS ,
                         'personnePrenom' => FILTER_SANITIZE_FULL_SPECIAL_CHARS ,
                         'personneSexe' => FILTER_SANITIZE_FULL_SPECIAL_CHARS ,
-                        'personneDateNaissance' => FILTER_VALIDATE_INT ,
+                        'personneDateNaissance' => FILTER_VALIDATE_INT , // issue
                         'personnePhotoURL' => FILTER_SANITIZE_FULL_SPECIAL_CHARS ,
                         'modPersonne' => FILTER_SANITIZE_ENCODED,
                         'supprimerPersonne' => FILTER_SANITIZE_FULL_SPECIAL_CHARS, 
@@ -145,9 +140,8 @@ if (isset($_GET["action"])){ // keep previous action to get into admin page.
                         'estActeur' => FILTER_SANITIZE_FULL_SPECIAL_CHARS
                     );
                 $filteredPost = filter_input_array(INPUT_POST, $filtersArguments, true);
-                $ctrlCinema->adminPersonne($filteredPost);
-                }
-            $ctrlCinema->admin();
+                $ctrlCinema->addPersonne($filteredPost);
+            }
             break;
 //administration des Rôles
         case "adminRole" :
