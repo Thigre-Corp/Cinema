@@ -11,7 +11,6 @@
         <title>Drive-In : <?= $titre ?></title>
     </head>
     <body>
-        <div class="container">
             <header>
                 <img src="./public/img/DRIVE-IN.png">
                 <h1>Drive-In : <?= $titre ?></h1>
@@ -34,6 +33,5 @@
             <footer>
                 <small><a href= "#">Mentions légales, ETC...</a></small>
             </footer>
-        </div> <!-- fin container -->
     </body>
 </html>

@@ -10,7 +10,7 @@ ob_start(); ?>
                     <img class="Ubox" alt="où est l'affiche?"  src="./public/img/personne/<?= $personne['personne_photoURL'] ?>" >
                     <div class="etatCivil Ubox">
                         <h2><?=$personne['personne_prenom']?> <?=$personne['personne_nom']?></h2>
-                        <p><?= $personne['personne_sexe']= "m" ? "Homme" : "Femme"?> - né le <?=$personne['personne_dateNaissance']?></p>
+                        <p><?= $personne['personne_sexe']= "m" ? "Homme" : "Femme"?> - né le <?=$personne['personne_Naissance']?></p>
                     </div>
                     <div class="film Ubox">
                         <h3>Films Notables</h3>

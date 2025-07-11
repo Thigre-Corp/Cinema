@@ -62,12 +62,12 @@ ob_start(); ?>
             <input type="submit" name="suppFilm" value="SUPPRIMER">
         </form>
     </div>
-<!-- Ajout rôle -->
+<!--OK Ajout rôle -->
                 <div class="addRole Ubox">  
                     <h3>Ajouter  role</h3>
                     <form action="index.php?action=addRole" name="addRole" method="POST">
-                        <label for="addRole">Nom:</label>
-                            <input type="text" id="addRole" name="addRole"></input>
+                        <label for="role_nom">Nom:</label>
+                            <input type="text" id="role_nom" name="role_nom"></input>
                         <input type='submit' name='addRole' value="AJOUTER"></input>
                     </form>
                 </div>
@@ -75,9 +75,9 @@ ob_start(); ?>
                 <div class="suppRole Ubox">  
                     <h3>Supprimer role</h3>
                     <form action="index.php?action=suppRole"name="suppRole" method="POST">
-                        <label for="suppRole"></label>
-                            <select id="suppRole" name="suppRole">
-                                <option selected value="0">-Supprimer rôle-</option>
+                        <label for="idRole">Role:</label>
+                            <select id="idRole" name="idRole">
+                                <option selected disabled>-Supprimer rôle-</option>
                                 <?php
                                     foreach($requeteRole as $role ){
                                         ?>
@@ -89,7 +89,7 @@ ob_start(); ?>
                                     <input type='submit' name='suppRole' value='SUPPRIMER'></input>
                     </form>
                 </div>
-<!-- Ajout genre -->
+<!--OK Ajout genre -->
                 <div class="addGenre Ubox">  
                     <h3>Ajouter genre</h3>
                     <form action="index.php?action=addGenre" name="addGenre" method="POST">
@@ -98,7 +98,7 @@ ob_start(); ?>
                         <input type="submit" name="addGenre" value="AJOUTER">
                     </form>
                 </div>
-<!-- Suppression genre -->
+<!--OK Suppression genre -->
                 <div class="suppGenre Ubox">  
                     <h3>Supprimer genre</h3>
                     <form action="index.php?action=suppGenre" name="suppGenre" method="POST">
@@ -138,8 +138,6 @@ ob_start(); ?>
                                 <input type="checkbox" id="estActeur" name="estActeur">
                         <label for="estReal">Réalisateur:</label>
                                 <input type="checkbox" id="estReal" name="estReal"><br>
-                        <label for="supprimerPersonne">Supprimer:</label>
-                                <input type="checkbox" id="supprimerPersonne" name="supprimerPersonne"><br>
                         <input type="submit" name="addPersonne" value="AJOUTER">
                     </form>
                 </div>
@@ -147,9 +145,9 @@ ob_start(); ?>
                 <div class="suppPersonne Ubox">
                     <h3>Supprimer Personne</h3>
                     <form action="index.php?action=suppPersonne" name="suppPersonne" method="POST">
-                        <label for="idGenre">Personne:</label>
-                            <select id="idGenre" name="idGenre">
-                                <option selected value="0">-supprimer personne-</option>
+                        <label for="idPersonne">Personne:</label>
+                            <select id="idPersonne" name="idPersonne">
+                                <option selected disabled>-supprimer personne-</option>
                                 <?php
                                     foreach($requetePersonne as $personne ){
                                         ?>
@@ -175,3 +173,5 @@ require "view/template.php";
 
 //buffering start
 ob_start(); ?>
+
+

@@ -11,7 +11,7 @@ ob_start(); ?>
                     break;
                 }
                 ?>
-                <div class="cardFilmAccueil">
+                <div class="cardFilmAccueil Ubox">
                     <a href="?action=detailFilm&id=<?= $film['id_film'] ?>">
                         <img alt="où est l'affiche?"  src="./public/img/film/<?= $film['film_afficheURL'] ?>" >
                         <div><?= $film["film_titre"] ?> (<?= $film["film_annee"] ?>)</div>

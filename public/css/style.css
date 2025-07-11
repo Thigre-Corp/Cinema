@@ -6,55 +6,66 @@
     --buttonColorActive : rgb(38, 77, 94);
     --upperGradient : radial-gradient(var(--primaryColor) 50%, var(--primaryColorAlpha) 100%);
     font-family: "Inter", sans-serif;
-    box-sizing: border-box;
     margin: 0;
     padding :0;
+    box-sizing: border-box;
 }
 
 body{
+    display: grid;
+    grid-template-areas:
+        "driveIn nav nav"
+        "screen screen screen"
+        "footer footer footer";
+
+    gap: .5em;
+
+    height: 90vh;
     background-color: black;
-    display: flex;
-    flex-direction: row ;
-    justify-content: space-around;
-    align-self:center;
-    background-image: url("../img/bg_driveIn.png");
-    background-repeat: no-repeat;
-    background-position: bottom ;
 }
 
-.container{
-    margin: 2vh 2vw;
-    height: 90vh;
-    width: 80vw;
-
-    background-size: 250%;
-    background-position: center ;
-    header{
-        margin-bottom: 20px;
-        height: 108px;
-        img{
-            z-index: -1;
-            transform: rotate(-25deg) scale(80%) translateX(-10em);
-            position: absolute;
-            top: -5vh;
-        }
+header{
+    margin-bottom: 20px;
+    height: 108px;
+    img{
+        grid-area: driveIn;
+        z-index: 1;
+        transform: rotate(-25deg) scale(60%) translateX(-10em);
+        position: absolute;
+        top: -180px;
+        left: 0;
+    }
+    h1{
+        grid-area: driveIn;
+        color: var(--primaryColorAlpha);
     }
     nav ul{
-        list-style: none;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
+    grid-area: nav;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     }
+}
+
+
+footer{
+    grid-area: footer;
+    height: 300px;
+    background-image: url("../img/bg_driveIn.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #screen{
-    /*height: 80vh;*/
+    grid-area: screen;
+    justify-content: space-around;
+    align-self:center;
+    height: 80vh;
     box-shadow: 0 0 5em whitesmoke;
     background-color: var(--primaryColorAlpha);
     border-radius: 10px;
 }
-
-
 
 .button{
     height: 54px;
@@ -77,13 +88,12 @@ body{
 .Ubox{
     background-color: var(--secondaryColor);
     border-radius: 10px;
-    /*backdrop-filter: grayscale(100%);*/
 }
+/*cards*/
 
 .cardFilmAccueil{
-    display: block;
-    width: 30vw;
-    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
     margin: 10px;
     img{
         width: 100%;
@@ -143,7 +153,6 @@ body{
     grid-template-rows: 1fr 4fr ;
     gap: .5em;
     text-align: center;
-    border: 3px solid black;
         img{
             width: 100%;
             grid-area: photo;
@@ -167,7 +176,6 @@ body{
 .cardProfilList{
     display: block;
     width: 30vw;
-    border: 1px solid black;
     margin: 10px;
     img{
         width: 100%;

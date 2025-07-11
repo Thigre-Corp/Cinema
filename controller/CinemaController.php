@@ -5,8 +5,7 @@ use Model\Connect;
 
 class CinemaController {
 
-    // page d'accueil
-
+// page d'accueil
     public function accueil() {
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
@@ -16,8 +15,7 @@ class CinemaController {
         require "view/accueil.php";
     }
 
-    // lister les films
-
+// lister les films
     public function listFilms() {
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
@@ -27,8 +25,7 @@ class CinemaController {
         require "view/listFilms.php";
     }
     
-    // LISTER ACTEURS
-    
+// LISTER ACTEURS 
     public function listActeurs() { // OK
 
         $pdo = Connect::seConnecter();
@@ -41,7 +38,7 @@ class CinemaController {
         require "view/listActeurs.php";
     }
 
-    // LISTER REALISATEURS
+// LISTER REALISATEURS
     public function listRealisateurs() { // OK
 
         $pdo = Connect::seConnecter();
@@ -54,7 +51,7 @@ class CinemaController {
         require "view/listRealisateurs.php";
     }
 
-    //Creer casting
+//Creer casting
     public function creerCasting($idFilm, $idActeur, $idRole) {
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
@@ -68,7 +65,7 @@ class CinemaController {
         ]);
     }
 
-    //supprimer casting
+//supprimer casting
     public function supprimerCasting($idFilm, $idRole) {
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
@@ -81,8 +78,7 @@ class CinemaController {
         ]);
     }
 
-    //détail film selon id
-
+//détail film selon id
     public function detailFilm($id) { // ajouter casting / rôle, gref, la totale :)
         $pdo = Connect::seConnecter();
         $requeteFilm = $pdo->prepare(
@@ -119,21 +115,22 @@ class CinemaController {
         require "view/detailFilm.php";
     }
 
-    // détail personne selon id
-
+// détail personne selon id
     public function detailPersonne($id) {
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare(
             "
-                SELECT *
+                SELECT id_personne, personne_nom, personne_prenom, personne_sexe, personne_photoURL, personne_dateNaissance, DATE_FORMAT(
+                    personne_dateNaissance
+                     , '%d/%m/%Y') AS personne_Naissance
                 FROM personne
                 WHERE  id_personne = :id
             ");
         $requete->execute(["id" =>$id]);
         require "view/detailPersonne.php";
     }
-<<<<<<< HEAD
 
+// peupler la page modFilm
     public function modFilm($id){
         $pdo = Connect::seConnecter();
         $requeteFilm = $pdo->prepare(
@@ -195,7 +192,15 @@ class CinemaController {
 
         require "view/modFilm.php";
     }
+/****************************************************
+ * modification d'un film
+ * 
+ * 
+ * 
+ * 
+******************************************************/
 
+//modification de l'affiche
     public function udAffiche($id, $filteredPost){
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare(
@@ -208,6 +213,7 @@ class CinemaController {
        $this::modFilm($id);
     }
 
+//modification de la note
     public function udNote($id, $filteredPost){
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare(
@@ -220,6 +226,7 @@ class CinemaController {
        $this::modFilm($id);
     }
 
+//modification du titre
     public function udTitre($id, $filteredPost){
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare(
@@ -232,6 +239,7 @@ class CinemaController {
        $this::modFilm($id);
     }
 
+//modification de l'année de sortie
     public function udAnnee($id, $filteredPost){
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare(
@@ -244,6 +252,7 @@ class CinemaController {
        $this::modFilm($id);
     }
 
+//modification de la durée
     public function udDuree($id, $filteredPost){
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare(
@@ -256,6 +265,7 @@ class CinemaController {
        $this::modFilm($id);
     }
 
+//modification du réalisateur  
     public function udReal($id, $filteredPost){
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare(
@@ -268,6 +278,7 @@ class CinemaController {
        $this::modFilm($id);
     }
 
+//modification du résumé
     public function udResume($id, $filteredPost){
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare(
@@ -280,6 +291,7 @@ class CinemaController {
        $this::modFilm($id);
     }
 
+//Supression d'un rôle
     public function udDeleteRole($id, $filteredActorID, $filteredRoleID){
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare(
@@ -291,8 +303,4 @@ class CinemaController {
        $this::modFilm($id);
     }
 
-
-
-=======
->>>>>>> d431d571bddbdd4ca2cbb543ae694a6dd82495e8
 }
