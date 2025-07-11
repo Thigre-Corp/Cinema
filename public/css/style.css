@@ -11,224 +11,42 @@
     box-sizing: border-box;
 }
 
-body{
-    display: grid;
-    grid-template-areas:
-        "driveIn nav nav"
-        "screen screen screen"
-        "footer footer footer";
-
-    gap: .5em;
-
-    height: 90vh;
-    background-color: black;
+.container{
+    display : grid;
+    grid-template-areas: 
+    "imgDriveIn accueil films reals acteurs admin empty"
+    
+    
+    ;
 }
 
-header{
-    margin-bottom: 20px;
-    height: 108px;
-    img{
-        grid-area: driveIn;
-        z-index: 1;
-        transform: rotate(-25deg) scale(60%) translateX(-10em);
-        position: absolute;
-        top: -180px;
-        left: 0;
-    }
-    h1{
-        grid-area: driveIn;
-        color: var(--primaryColorAlpha);
-    }
-    nav ul{
-    grid-area: nav;
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    }
+.imgDriveIn{
+    grid-area: imgDriveIn;
 }
-
-
-footer{
-    grid-area: footer;
-    height: 300px;
-    background-image: url("../img/bg_driveIn.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+.emtpy{
+    grid-area : emtpy;
+    display: none;
 }
-
-#screen{
-    grid-area: screen;
-    justify-content: space-around;
-    align-self:center;
-    height: 80vh;
-    box-shadow: 0 0 5em whitesmoke;
-    background-color: var(--primaryColorAlpha);
-    border-radius: 10px;
+.accueil{
+    grid-area : accueil;
 }
-
-.button{
-    height: 54px;
-    width: 177px;
-    text-decoration: none;
-    color: var(--secondaryColor);
-    font-size: 2em;
-    background-color: var(--buttonColor);
-    border-radius: 10px;
-    margin: 10px;
-    padding: .5em;
-
-    &:hover{
-        background-color: var(--buttonColorActive);
-    }
-
+.films{
+    grid-area : film;
 }
-
-
-.Ubox{
-    background-color: var(--secondaryColor);
-    border-radius: 10px;
+.reals{
+    grid-area : reals;
 }
-/*cards*/
-
-.cardFilmAccueil{
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-    img{
-        width: 100%;
-        aspect-ratio: 9/16;
-    }
-
-    div{
-        text-align: center;
-        background: var(--secondaryColor);
-        color: var(--primaryColor);
-        font-size: 28;
-        font-weight: 400;
-    }
+.acteurs{
+    grid-area : acteurs
 }
-.cardFilmComplet{
-    height: 100%;
-    display: grid;
-    grid-template-areas:
-        "affiche note    titre titre   real"
-        "affiche resume  resume  resume resume"
-        "affiche casting casting genre genre";
-    grid-template-columns: 4fr 1fr 2fr 2fr 1fr;
-    grid-template-rows: 1fr 2fr 1fr;
-    gap: .5em;
-    text-align: center;
-    border: 3px none black;
-        .filmAffiche{
-            width: 100%;
-            grid-area: affiche;
-        }
-        .filmNote{
-            grid-area : note;
-        }
-        .filmTitreAnnee{
-            grid-area: titre;
-        }
-        .filmReal{
-            grid-area: real;
-        }
-        .filmResume{
-            grid-area: resume;
-        }
-        .casting{
-            grid-area: casting;
-        }
-        .genre{
-            grid-area: genre;
-        }
-}
-.cardProfil{
-    display: grid;
-    grid-template-areas:
-        "photo nom  nom"
-        "photo film collab"
-        "photo film collab";
-    grid-template-columns: repeat(1fr,3) ;
-    grid-template-rows: 1fr 4fr ;
-    gap: .5em;
-    text-align: center;
-        img{
-            width: 100%;
-            grid-area: photo;
-        }
-        .etatCivil{
-            grid-area : nom;
-        }
-        .film{
-            grid-area: film;
-        }
-        .collab{
-            grid-area: collab;
-        }
-        .filmResume{
-            grid-area: resume;
-        }
-        .casting{
-            grid-area: casting;
-        }
-}
-.cardProfilList{
-    display: block;
-    width: 30vw;
-    margin: 10px;
-    img{
-        width: 100%;
-        aspect-ratio: 9/16; /*à revoir --- pas bon du tout.....*/
-    }
-
-    div{
-        text-align: center;
-        background: var(--secondaryColor);
-        color: var(--primaryColor);
-        font-size: 28;
-        font-weight: 400;
-    }
-}
-#adminPage{
-    display: grid;
-    grid-template-areas:
-        "addfilm addRole addPersonne"
-        "addfilm suppRole addPersonne"
-        "addfilm addGenre addPersonne"
-        "suppFilm suppGenre suppPersonne";
-    gap: .5em;
-}
-.addFilm{
-    grid-area: addfilm;
-    display: flex;
-    flex-direction: column;
-    * {
-        display: inline;
-    }
-}
-.suppFilm{
-    grid-area: suppFilm;
-}
-.addPersonne{
-    grid-area: addPersonne;
-}
-.suppPersonne{
-    grid-area: suppPersonne;
-}
-.addRole{
-    grid-area: addRole;
-}
-.suppRole{
-    grid-area: suppRole;
-
-}
-.addGenre{
-    grid-area: addGenre;
-}
-.suppGenre{
-    grid-area: suppGenre;
-}
-
-
-
+.admin" href="?action=admin">ADMIN</a></li>
+                        </ul>
+                    </nav>
+            </header>
+            <main>
+#screen'> <!-- container screen-->
+                    <?= $contenu ?>
+                </div>
+            </main>
+."footer">
+                <small><a href= "#">Mentions légales, ETC...</a></small>

@@ -11,17 +11,18 @@
         <title>Drive-In : <?= $titre ?></title>
     </head>
     <body>
+        <div class="container">
             <header>
-                <img src="./public/img/DRIVE-IN.png">
+                <img src="./public/img/DRIVE-IN.png" class="imgDriveIn" >
                 <h1>Drive-In : <?= $titre ?></h1>
                     
                     <nav>
                         <ul>
-                            <li><a class="button" href="./#">ACCEUIL</a></li>
-                            <li><a class="button" href="?action=listFilms">FILMS</a></li>
-                            <li><a class="button" href="?action=listRealisateurs">REALISATEURS</a></li>
-                            <li><a class="button" href="?action=listActeurs">ACTEURS</a></li>
-                            <li><a class="button" href="?action=admin">ADMIN</a></li>
+                            <li><a class="button accueil" href="./#">ACCEUIL</a></li>
+                            <li><a class="button films" href="?action=listFilms">FILMS</a></li>
+                            <li><a class="button reals" href="?action=listRealisateurs">REALISATEURS</a></li>
+                            <li><a class="button acteurs" href="?action=listActeurs">ACTEURS</a></li>
+                            <li><a class="button admin" href="?action=admin">ADMIN</a></li>
                         </ul>
                     </nav>
             </header>
@@ -30,8 +31,9 @@
                     <?= $contenu ?>
                 </div>
             </main>
-            <footer>
+            <footer class="footer">
                 <small><a href= "#">Mentions légales, ETC...</a></small>
             </footer>
+        </div>
     </body>
 </html>
