@@ -4,7 +4,6 @@ ob_start(); ?>
 
 
         <?php
-          // var_dump($requete->fetch());                                   FACTORISATION !!!!!!!! + mise en forme DATE de naissance...
             $personne = $requete->fetch();
                 ?>
                 <div class="cardProfil">
@@ -22,7 +21,6 @@ ob_start(); ?>
                 </div>
 
 <?php
-//var_dump($personne);
 $titre= $personne['personne_prenom']." ".$personne['personne_nom'];
 $titre_secondaire = "Informations sur ".$personne['personne_prenom']." ".$personne['personne_nom'];
 // buffering end

@@ -1,21 +1,11 @@
 <?php
-
 ob_start(); ?>
 
             <div id="adminPage">
-<!-- administration des films-->
-                <div class="adminFilm"> 
-                    <h3>Ajouter  un film</h3>
-                    <form action="index.php?action=adminFilm" name="film" method="POST"> 
-                        <!-- <label for="idFilm">Créer ou modifier un film:</label>
-                            <select id="idFilm" name="idFilm">
-                                <option selected value="0">-créer un nouveau film-</option>
-                                <?php
-                                 
-                                    //     <?php
-                                    // }
-                                    ?>                                 -->
-                            </select><br>
+<!--OK Ajout film -->
+                <div class="addFilm Ubox"> 
+                    <h3>Ajouter film</h3>
+                    <form action="index.php?action=addFilm" name="addFilm" method="POST"> 
                         <label for="titreFilm">Titre:</label>
                             <input type="text" id="titreFilm" name="titreFilm"><br>
                         <label for="anneeFilm">Année de sortie:</label>
@@ -50,15 +40,86 @@ ob_start(); ?>
                             </select><br>
                         <label for="resumeFilm">Résumé:</label>
                             <input type="text" id="resumeFilm" name="resumeFilm"><br>
-                        <label for="supprimerFilm">Supprimer:</label>
-                            <input type="checkbox" id="supprimerFilm" name="supprimerFilm"><br>
-                        <input type="submit" name="modFilm" value="ENVOYER">
+                        <input type="submit" name="addFilm" value="AJOUTER">
                     </form>
                 </div>
-<!-- administration des personnes -->
-                <div class="adminPersonnes">
-                    <h3>Ajouter  Personne</h3>
-                    <form action="index.php?action=adminPersonne" name="personne" method="POST">
+
+<!--OK suppression film -->
+    <div class="suppFilm Ubox">
+        <h3>Supprimer film</h3>
+        <form action="index.php?action=suppFilm" name="suppFilm" method="POST"> 
+            <label for="idFilm"></label>
+                <select id="idFilm" name="idFilm">
+                    <option selected value="0">-Supprimer film-</option>
+                    <?php
+                        foreach($requeteFilm as $film ){
+                            ?>
+                            <option value="<?=$film['id_film']?>"><?=$film['film_titre']?></option>
+                            <?php
+                        }
+                        ?>
+                </select>
+            <input type="submit" name="suppFilm" value="SUPPRIMER">
+        </form>
+    </div>
+<!-- Ajout rôle -->
+                <div class="addRole Ubox">  
+                    <h3>Ajouter  role</h3>
+                    <form action="index.php?action=addRole" name="addRole" method="POST">
+                        <label for="addRole">Nom:</label>
+                            <input type="text" id="addRole" name="addRole"></input>
+                        <input type='submit' name='addRole' value="AJOUTER"></input>
+                    </form>
+                </div>
+<!-- Suppression rôle -->
+                <div class="suppRole Ubox">  
+                    <h3>Supprimer role</h3>
+                    <form action="index.php?action=suppRole"name="suppRole" method="POST">
+                        <label for="suppRole"></label>
+                            <select id="suppRole" name="suppRole">
+                                <option selected value="0">-Supprimer rôle-</option>
+                                <?php
+                                    foreach($requeteRole as $role ){
+                                        ?>
+                                        <option value="<?=$role['id_role']?>"><?=$role['role_nom']?></option>
+                                        <?php
+                                    }
+                                    ?>
+                            </select>
+                                    <input type='submit' name='suppRole' value='SUPPRIMER'></input>
+                    </form>
+                </div>
+<!-- Ajout genre -->
+                <div class="addGenre Ubox">  
+                    <h3>Ajouter genre</h3>
+                    <form action="index.php?action=addGenre" name="addGenre" method="POST">
+                                                <label for="genreLibelle">Libellé du genre:</label>
+                            <input type="text" id="genreLibelle" name="genreLibelle"></input>
+                        <input type="submit" name="addGenre" value="AJOUTER">
+                    </form>
+                </div>
+<!-- Suppression genre -->
+                <div class="suppGenre Ubox">  
+                    <h3>Supprimer genre</h3>
+                    <form action="index.php?action=suppGenre" name="suppGenre" method="POST">
+                        <label for="idGenre">Genre:</label>
+                            <select id="idGenre" name="idGenre">
+                                <option selected value="0">-supprimer genre-</option>
+                                <?php
+                                    foreach($requeteGenre as $genre ){
+                                        ?>
+                                        <option value="<?=$genre['id_genre']?>"><?=$genre['genre_libelle']?></option>
+                                        <?php
+                                    }
+                                ?>
+                            </select>
+                        <input type="submit" name="suppGenre" value="SUPPRIMER">
+                    </form>
+                </div>
+<!-- ajout personne -->
+                <div class="addPersonne Ubox">
+                    <h3>Ajouter Personne</h3>
+                    <form action="index.php?action=addPersonne" name="addPersonne" method="POST">
                         
                         <label for="personneNom">Nom:</label>
                             <input type="text" id="personneNom" name="personneNom"></input><br>
@@ -79,45 +140,28 @@ ob_start(); ?>
                                 <input type="checkbox" id="estReal" name="estReal"><br>
                         <label for="supprimerPersonne">Supprimer:</label>
                                 <input type="checkbox" id="supprimerPersonne" name="supprimerPersonne"><br>
-                        <input type="submit" name="modPersonne" value="ENVOYER">
+                        <input type="submit" name="addPersonne" value="AJOUTER">
                     </form>
                 </div>
-<!-- administration des castings -->
-                <div class="adminCasting">  
-                    <h3>Ajouter  role</h3>
-                    <form name="casting" method="POST">
-                        <label for="personneNom">Nom:</label>
-                        <input type="text" id="personneNom" name="personneNom"></input>
-
-
-
-
-
-                    </form>
-                </div>
-<!-- administration des genres -->
-                <div class="adminGenre">  
-                    <h3>Ajouter  un genre</h3>
-                    <form action="index.php?action=adminGenre" name="genre" method="POST">
-                        <label for="idGenre">Genre:</label>
+<!-- suppression personne -->
+                <div class="suppPersonne Ubox">
+                    <h3>Supprimer Personne</h3>
+                    <form action="index.php?action=suppPersonne" name="suppPersonne" method="POST">
+                        <label for="idGenre">Personne:</label>
                             <select id="idGenre" name="idGenre">
-                                <option selected value="0">-créer un genre-</option>
+                                <option selected value="0">-supprimer personne-</option>
                                 <?php
-                                    foreach($requeteGenre as $genre ){
+                                    foreach($requetePersonne as $personne ){
                                         ?>
-                                        <option value="<?=$genre['id_genre']?>"><?=$genre['genre_libelle']?></option>
+                                        <option value="<?=$personne['id_personne']?>"><?=$personne['personne_nom']." ".$personne['personne_prenom']?></option>
                                         <?php
                                     }
-                                    ?>
+                                ?>
                             </select><br>
-                        <label for="genreLibelle">Libellé du genre:</label>
-                            <input type="text" id="genreLibelle" name="genreLibelle"></input>
-                        <label for="supprimerGenre">Supprimer:</label>
-                            <input type="checkbox" id="supprimerGenre" name="supprimerGenre"><br>
-                        <input type="submit" name="modGenre" value="ENVOYER">
+                        <input type="submit" name="suppPersonne" value="SUPPRIMER">
                     </form>
                 </div>
-            </div>
+
 
 <!-- fin HTML -->
 

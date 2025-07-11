@@ -33,13 +33,82 @@ class AdminController {
             FROM personne;
             ");
         $requetePersonne = $requetePersonne->fetchAll();
+        $requeteRole = $pdo->query(
+            "
+            SELECT *
+            FROM role
+            "
+        );
+        $requeteFilm = $pdo->query("
+            SELECT id_film, film_titre
+            FROM film        
+        ");
 
         require "view/admin.php";
     }
+//ajouter film  
+    public function addFilm($filmForm){
+            $pdo = Connect::seConnecter();
+            $requete = $pdo->prepare(
+                "
+                INSERT INTO `film` ( `film_titre`, `film_annee`, `film_duree`, `film_note`, `film_afficheURL`, `film_resume`, `id_realisateur`) 
+                VALUES ( :titre , :annee , :duree , :note , :affiche, :resume , :real);
+            ");
+            $requete->execute([
+                "titre" => htmlspecialchars($filmForm["titreFilm"]),
+                "annee" => strval($filmForm["anneeFilm"]),
+                "duree" => $filmForm["dureeFilm"],
+                "note" => $filmForm["noteFilm"],
+                "affiche" => $filmForm["afficheFilmURL"],
+                "resume" => $filmForm["resumeFilm"],
+                "real" => $filmForm["idReal"]  
+            ]);
+            $this->admin();
+    }
+//supprimer film  
+    public function suppFilm($filmForm){
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare(
+            "
+            DELETE FROM `film`
+            WHERE id_film = :id ;
+        ");
+        $requete->execute([
+            "id" => $filmForm
+        ]);
+        $this->admin();
+    }
+//ajouter genre
+    public function addGenre($filmForm){
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare(
+            "
+            INSERT INTO `genre` ( `genre_libelle`) 
+            VALUES ( :genreLibelle);
+        ");
+        $requete->execute([
+            "genreLibelle" => $filmForm,
+        ]);
+        $this->admin();
+    }
+//supprimer genre
+    public function suppGenre($filmForm){
+        $pdo = Connect::seConnecter();
+        $requete = $pdo->prepare(
+            "
+            DELETE FROM `genre`
+            WHERE id_genre = :id ;
+        ");
+        $requete->execute([
+            "id" => $filmForm,
+        ]);
+        $this->admin();
+    }
+
 
 
 }
-
+/*
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -236,3 +305,4 @@ class AdminController {
 
     }
 
+*/
