@@ -1,4 +1,5 @@
 :root{
+    --bg-color:rgba(18, 21, 46, 1);
     --primaryColor : #000000FF;
     --primaryColorAlpha: #00000000;
     --secondaryColor : #FDFDFDFF;
@@ -11,14 +12,46 @@
     box-sizing: border-box;
 }
 
-.container{
-    display : grid;
-    grid-template-areas: 
-    "imgDriveIn accueil films reals acteurs admin empty"
-    
-    
-    ;
+
+body{
+    background-color: var(--bg-color);
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
 }
+
+.container{
+    display: grid;
+    background: radial-gradient(circle,rgba(138, 124, 124, .5) 28%, var(--bg-color) 50%);
+    grid-template-areas: 
+    "header"
+    "screen"
+    "footer";
+    grid-template-rows: 10% 80% 10%;
+/*     grid-template-columns: 10% 80% 10%;
+ */
+}
+
+#screen{
+    grid-area: screen;
+   /* position:absolute;
+    top: 0;
+    left: 0;
+    height: 80%;
+    width: 80%;*/
+    background-color: var(--secondaryColor);
+    transform-origin: top left;
+    transform: translate(10vw, 10vh);
+}
+
+header{
+    grid-area: header;
+}
+
+footer{
+    grid-area: footer;
+}
+
 
 .imgDriveIn{
     grid-area: imgDriveIn;
@@ -39,14 +72,3 @@
 .acteurs{
     grid-area : acteurs
 }
-.admin" href="?action=admin">ADMIN</a></li>
-                        </ul>
-                    </nav>
-            </header>
-            <main>
-#screen'> <!-- container screen-->
-                    <?= $contenu ?>
-                </div>
-            </main>
-."footer">
-                <small><a href= "#">Mentions légales, ETC...</a></small>
