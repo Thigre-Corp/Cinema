@@ -14,15 +14,18 @@
 
 
 body{
-    background-color: var(--bg-color);
-    position: absolute;
+    /*background-color: var(--bg-color);*/
+        background-image: url("/public/img/bg_driveIn.png");
+
+    /*position: absolute;
     inset: 0;
-    overflow: hidden;
+    overflow: hidden;*/
 }
 
 .container{
     display: grid;
-    background: radial-gradient(circle,rgba(138, 124, 124, .5) 28%, var(--bg-color) 50%);
+    /* background: radial-gradient(circle,rgba(138, 124, 124, .5) 28%, var(--bg-color) 50%); */
+
     grid-template-areas: 
     "header"
     "screen"

@@ -13,7 +13,7 @@
     <body>
         <div class="container">
             <header>
-                <img src="./public/img/DRIVE-IN.png" class="imgDriveIn" >
+                <img src="./public/img/DRIVE-IN2.png" class="imgDriveIn" >
                 <h1>Drive-In : <?= $titre ?></h1>
                     
                     <nav>
@@ -28,7 +28,7 @@
             </header>
             <main>
                 <div id='screen'> <!-- container screen-->
-                    <?= $contenu ?>
+                    <!-- <?= $contenu ?> -->
                 </div>
             </main>
             <footer class="footer">
