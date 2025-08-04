@@ -14,12 +14,12 @@
 
 
 body{
-    /*background-color: var(--bg-color);*/
-        background-image: url("/public/img/bg_driveIn.png");
+    background-color: var(--bg-color);
 
-    /*position: absolute;
+
+    position: absolute;
     inset: 0;
-    overflow: hidden;*/
+    overflow: hidden;
 }
 
 .container{
@@ -33,6 +33,8 @@ body{
     grid-template-rows: 10% 80% 10%;
 /*     grid-template-columns: 10% 80% 10%;
  */
+    background-image: url("../img/bg_driveIn.png");
+    background-position: 0%;
 }
 
 #screen{
