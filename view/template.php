@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <meta http-equiv="refresh" content="3"> -->
         <link rel="stylesheet" href="./public/css/style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,23 +14,25 @@
     <body>
         <div class="container">
             <header>
-                <img src="./public/img/DRIVE-IN2.png" class="imgDriveIn" >
-                <h1>Drive-In : <?= $titre ?></h1>
-                    
-                    <nav>
-                        <ul>
-                            <li><a class="button accueil" href="./#">ACCEUIL</a></li>
-                            <li><a class="button films" href="?action=listFilms">FILMS</a></li>
-                            <li><a class="button reals" href="?action=listRealisateurs">REALISATEURS</a></li>
-                            <li><a class="button acteurs" href="?action=listActeurs">ACTEURS</a></li>
-                            <li><a class="button admin" href="?action=admin">ADMIN</a></li>
-                        </ul>
-                    </nav>
+                <a class="accueil"  href="./#">
+                    <img src="./public/img/DRIVE-IN2.png" class="imgDriveIn" >
+                    <h1>Drive-In : <?= $titre ?></h1>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a class="button films" href="?action=listFilms">FILMS</a></li>
+                        <li><a class="button reals" href="?action=listRealisateurs">REALISATEURS</a></li>
+                        <li><a class="button acteurs" href="?action=listActeurs">ACTEURS</a></li>
+                        <li><a class="button admin" href="?action=admin">ADMIN</a></li>
+                    </ul>
+                </nav>
             </header>
             <main>
                 <div id='screen'> <!-- container screen-->
-                    <!-- <?= $contenu ?> -->
+                    <?= $contenu ?>
                 </div>
+                <!-- <div id='emptyLeft'></div>
+                <div id='emptyRight'></div> -->
             </main>
             <footer class="footer">
                 <small><a href= "#">Mentions légales, ETC...</a></small>

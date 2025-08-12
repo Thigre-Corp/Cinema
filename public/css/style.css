@@ -1,79 +1,305 @@
 :root{
-    --bg-color:rgba(18, 21, 46, 1);
+    --bg-color:rgb(5, 7, 22);
     --primaryColor : #000000FF;
     --primaryColorAlpha: #00000000;
     --secondaryColor : #FDFDFDFF;
+    --boxesBG: #d9d9d9;
     --buttonColor : #3A464BFF;
     --buttonColorActive : rgb(38, 77, 94);
-    --upperGradient : radial-gradient(var(--primaryColor) 50%, var(--primaryColorAlpha) 100%);
+    --upperGradient : linear-gradient(var(--primaryColor) 25%, var(--primaryColorAlpha) 90%);
+    /* --lowerGradient : linear-gradient(var(--primaryColorAlpha) 75%, var(--primaryColor) 100%); */
     font-family: "Inter", sans-serif;
-    margin: 0;
-    padding :0;
-    box-sizing: border-box;
 }
 
 
 body{
-    background-color: var(--bg-color);
-
-
+    background-color: var(--bg-color); 
     position: absolute;
-    inset: 0;
-    overflow: hidden;
+    margin: 0;
+    padding : 0;
+    box-sizing: border-box;
+    overflow: hidden; 
 }
 
-.container{
-    display: grid;
-    /* background: radial-gradient(circle,rgba(138, 124, 124, .5) 28%, var(--bg-color) 50%); */
+main{
+    height: 80vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
 
-    grid-template-areas: 
-    "header"
-    "screen"
-    "footer";
-    grid-template-rows: 10% 80% 10%;
-/*     grid-template-columns: 10% 80% 10%;
- */
-    background-image: url("../img/bg_driveIn.png");
-    background-position: 0%;
+
+.container{
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    flex-direction: column;
+    width: 100vw;
+    max-width:100%;
+    height: 100vh;
+    max-height: 100%;
 }
 
 #screen{
-    grid-area: screen;
-   /* position:absolute;
-    top: 0;
-    left: 0;
-    height: 80%;
-    width: 80%;*/
+    /* grid-area: screen; */
+    align-self: center;
+    justify-self: center;
+    display: flex; 
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    width : 80%;
+    aspect-ratio: 16/9;
+    overflow: scroll;
     background-color: var(--secondaryColor);
-    transform-origin: top left;
-    transform: translate(10vw, 10vh);
+    box-shadow: 0 0 300px var(--secondaryColor);
+    border: .2em solid rgba(0, 0, 0, 0.515);
+    border-radius: .5em;
 }
+
+
 
 header{
-    grid-area: header;
+    background-image: var(--upperGradient); 
+    background-position: -00px -00px;
+    background-repeat: no-repeat;
+
+     height: 10vh;
+    *{
+        align-self: auto;
+    } 
 }
+
+nav ul{
+        /* padding-left: 1em;
+        padding-right: 1em; */
+    display: flex;  
+    justify-content: center; 
+    align-self: center; 
+    gap: 1em;
+    list-style: none;
+   }
 
 footer{
-    grid-area: footer;
+    z-index: 10;
+    position: absolute;
+    bottom: 0; 
+    height: 462px;
+    max-height: 40vh;
+    width: 100vw;
+
+    background-image: url("../img/bg_driveIn.png");
+    background-repeat: no-repeat , no-repeat;
+    background-size: auto;
+    background-position: top center;
+
+    text-align: center;
+    
+    small a{
+    position: absolute; 
+    bottom: 2em; 
+    left: 50vw;
+    transform: translateX(-50%);
+    color: var(--secondaryColor);
+    text-decoration: none;
+    font-weight: bolder;
+    }
+    
+   
 }
 
+.button{
+    /* display: block; */
+    background-color: var(--buttonColor);
+    color: var(--secondaryColor);
+    border-radius: 16px;
+    text-align: center;
+    font-weight: bolder;
+    align-content: center;
+    text-decoration: none;
+    padding: 1em 2em;
+}
 
-.imgDriveIn{
-    grid-area: imgDriveIn;
-}
-.emtpy{
-    grid-area : emtpy;
-    display: none;
-}
 .accueil{
-    grid-area : accueil;
+    .imgDriveIn{
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width: 64px;
+        max-width: 20vw;
+        /* aspect-ratio: 1/1; */
+        background: radial-gradient(ellipse at center, var(--primaryColor) 55%, transparent 75%);
+        transform: rotateZ(-30deg) translate(-10%, 10%);
+    }
+    h1{
+        color: var(--primaryColorAlpha);
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 }
-.films{
-    grid-area : film;
+
+.Ubox{
+    border: solid 2px black;
+    border-radius: 16px;
 }
-.reals{
-    grid-area : reals;
+
+.cardFilmAccueil{
+    max-width: 25%;
+    max-height: 80%;
+    a {
+        text-decoration: none;
+        color: var(--primaryColor);
+    }
+
+    img{
+        width: 100%;
+        }
+    div{
+        text-align: center;
+        
+        font-size: 2em;
+        font-weight: bold;
+    }
+
 }
-.acteurs{
-    grid-area : acteurs
+
+.cardFilmComplet{
+    margin: 5%;
+    max-height: 90%;
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+
+    * {
+        text-decoration: none;
+        color: var(--primaryColor);
+        align-content: top;
+        text-align: center;
+        background-color: var(--boxesBG);
+        overflow: scroll;
+    }
+
+  span{
+        display: block;
+    }
+
+    td{
+        text-align: left;
+    }
+
+    img{
+        grid-column: 1 / span 4;
+        grid-row:  1 / end;
+        max-width: 100%;
+        height: auto;
+        overflow: hidden;
+        place-content: center;
+
+    }
+
+    .filmNote{
+        grid-column: 5 / span 1;
+        grid-row: 1 / 1;
+        align-content: center;
+        text-align: center;
+    }
+
+    .filmTitreAnnee{
+        grid-column:  6/ span 4;
+        grid-row: 1 /1;
+        align-content: center;
+    }
+
+    .filmReal{
+        grid-column:  10/ span 2;
+        grid-row : 1 / 1;
+        align-content: center;
+        a{
+            display: block;
+            text-align: center;
+        }
+    }
+
+    .filmResume{
+        grid-column: 5/ -1 ;
+        grid-row: 2 / 4 ;
+        p{
+            padding-left: 1rem ;
+            padding-right: 1rem;
+        }
+    }
+
+    .casting{
+        grid-column: 5/ span 5;
+        grid-row: 4 / span 2;
+        align-content: top;
+        table{
+            margin: auto;
+            padding: 0 1rem 0 1rem ;
+        }
+    }
+
+    .genre{
+        grid-column: 10 / span 2;
+        grid-row: 4 / span 2;
+        align-content: top;
+        p{
+            margin: auto;
+            padding: 0 1rem 0 1rem ;
+        }
+
+    }
+}
+
+.cardProfil{
+
+    margin: 5%;
+    
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+
+    * {
+        text-decoration: none;
+        color: var(--primaryColor);
+        text-align: center;
+        background-color: var(--boxesBG);
+    }
+
+
+    img{
+        grid-column: 1 / span 4;
+        grid-row:  1 / end;
+        max-width: 100%;
+        height: auto;
+        overflow: hidden;
+        place-content: center;
+    }
+
+    .etatCivil{
+        grid-column: 5 / end;
+        grid-row : 1;
+        align-content: center;
+
+    }
+    .film{
+        grid-column: 5 / span 3;
+        grid-row: 2/ end;
+    }
+    .collab{
+        grid-column: 8 / end;
+        grid-row: 2/ end;
+    }
+
+}
+
+#adminPage{
+    margin: 5%;
+    max-height: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
 }
