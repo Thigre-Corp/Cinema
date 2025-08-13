@@ -62,7 +62,7 @@ header{
     background-image: var(--upperGradient); 
     background-position: -00px -00px;
     background-repeat: no-repeat;
-
+padding-top: 1em;
      height: 10vh;
     *{
         align-self: auto;
@@ -75,6 +75,7 @@ nav ul{
     display: flex;  
     justify-content: center; 
     align-self: center; 
+    
     gap: 1em;
     list-style: none;
    }
@@ -152,7 +153,11 @@ footer{
     }
 
     img{
-        width: 100%;
+        width: 100%; 
+        object-fit: contain;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+
         }
     div{
         text-align: center;

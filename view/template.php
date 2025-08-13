@@ -34,9 +34,13 @@
                 <!-- <div id='emptyLeft'></div>
                 <div id='emptyRight'></div> -->
             </main>
+            <?php if($titre != 'Admin'){
+            ?>                
             <footer class="footer">
                 <small><a href= "#">Mentions légales, ETC...</a></small>
             </footer>
+            <?php
+            } ?>
         </div>
     </body>
 </html>
